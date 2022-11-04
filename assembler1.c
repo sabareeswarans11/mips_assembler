@@ -2,8 +2,8 @@
 CIS 600 Computer Architecture Fall 2022 Project 1 - MIPS Assembler
 Authors: Mohamed Gani Mohamed Sulthan- 2811619, Sabareeswaran Shanmugam - 2796495
 
-Input : Run the code with argument asm file Eample(./assembler.c data2.asm)
-Output: It will create the bin file with data2.bin name
+Input : Run the code with argument asm file Example(./assembler.c data2.asm)
+Output: It will create the bin file with the data2.bin name
 
 Testcases Achieved:
 data2.asm
@@ -17,8 +17,6 @@ parsing.asm
 #include <string.h>
 #include <ctype.h>
 #include <stdint.h>
-
-// const uintptr_t mem_text_segment = 0x0200;
 
 void binary(unsigned n)
 {
@@ -78,15 +76,12 @@ int main(int argc, char *argv[])
     int inst = 0;
     int word_c = 0;
     char *writeFile; // Opening the file to write
-    // passed test case rtype.asm
-    // passed test case directive.asm
+
     printf("Total number of argument passed: %d\n", argc);
 
     // open source file in read mode
-
     if ((fp = fopen(argv[1], "r")) == NULL)
     {
-
         printf("Error...\nCannot open file: %s\n", argv[1]);
         printf("Specify the file name.\n");
         return -1;
@@ -192,7 +187,6 @@ int main(int argc, char *argv[])
     }
 
     /// @brief .text section byte order reversed and write it in big-endian format irrespective of os
-
     unsigned char value[inst][4];
     int count_inst = 0;
     for (int i = 0; i < inst; i++)
@@ -204,7 +198,8 @@ int main(int argc, char *argv[])
         value[count_inst][3] = (uint32_t)b2.machine_code_text[i];
         count_inst++;
     }
-    // gets (writeFile);
+    
+    // Opening a file to write the output
     strcat(writeFile, ".bin");
     printf("Outfile Created: %s", writeFile);
     fo = fopen(writeFile, "wb");
@@ -222,8 +217,6 @@ int main(int argc, char *argv[])
     {
         printf("binary file not written");
     }
-
-    // fwrite(array, sizeof(array), 1, fo);
 
     fclose(fp);
     fclose(fo);
